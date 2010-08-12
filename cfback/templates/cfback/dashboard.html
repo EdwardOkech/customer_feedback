@@ -1,0 +1,57 @@
+{%extends 'cfback/base.html'%}
+{%block title%}{{company.namy}}{%endblock %}
+{%block content%}
+<div class="container-fluid">
+  <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Overview</a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Export</a></li>
+          </ul>
+         </div>
+        </div>
+   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+             <div class="table-responsive">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                     <h3 class="panel-title">Customer Feedbacks</h3>
+                        {% if feedbacks %}
+                          <table class="table table-hover table-contextual">
+                             <th>#</th><th>feedback</th>
+                                {% for feedback in feedbacks %}
+                                  <tr class="active"><td>{{feedback.id}}</td><td>{{feedback.title}}</td></tr>
+                                {% endfor %}
+                          </table>                      
+                                
+                        {% endif %}
+                     
+                      
+             
+                          </div>
+                      </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+ {% if user.is_authenticated %}
+   welcome :{{ user.username }}
+ {% else %}
+   <h5> not a registered user </h5>
+{% endif %} 
+ 
+          
+<p>
+
+</p>
+           </div>
+       </div>
+   </div>
+</div>
+     
+{%endblock content%}
+
+                       <!-- <<a href="{%comment %}{% url 'cfback:feedback_detail' feedback.id %}{% endcomment %}"></a></tr> -->
