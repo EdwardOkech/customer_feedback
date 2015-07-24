@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cfback',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -71,6 +72,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'customer_feedback.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_MODEL_SERIALIZER_CLASS':
+            'rest_framework.serializers.HyperlinkedModelSerializer',
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        ]
+    }
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -82,7 +90,7 @@ DATABASES = {
     }
 }
 
-
+##SESSION_COOKIE_DOMAIN = "http://localhost:8000/"
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
