@@ -1,0 +1,6 @@
+ {%extends 'cfback/base.html'%}
+{%block title%}{{user.username}}{%endblock %}
+
+{%block content%}<br><br>
+<li> <a href="{% url 'cfback/add_feedback' %}"> Add company feedback </a> </li>
+{%endblock  content %}

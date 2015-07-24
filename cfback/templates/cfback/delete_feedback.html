@@ -1,0 +1,22 @@
+{%extends 'cfback/base.html'%}
+{%block title%}Submit Feedback{%endblock %}
+{%block content%}
+
+<form  class="form-signin" action="{% url 'cfback:delete_feedback' feedback.pk %}" method="POST">
+{% csrf_token %}
+{% for feedback in feedbacks %}
+   <div class="comment">
+       <div class="">{{ feedback.title }}|{{ feedback.customer}}</div>
+       <div class="">{{ feedback.description | linebreaks}} </div>
+       {% if user.has_perm =='can_delete_feedback' %}
+           <input type="checkbox" name="delete" value="{{ feedback.pk }}">
+           <a href="{% url 'cfback/delete_feedback feedback.id %}">delete</a>
+           {% endif %}
+          </div>
+  {% endfor %}
+  {% if user.has_perm == 'can_delete_feedback' and feedbacks %}
+     <p><input type="submit" value="delete all selected" class="btn btn-sm btn-primary btn-block"></p>
+     <br/>
+  {% endif %}
+  </form>
+{%endblock content%}

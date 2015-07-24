@@ -1,0 +1,181 @@
+{% extends "cfback/base_index.html" %}
+{%load staticfiles%}
+{%block title%}Customer Feedback - Home{% endblock %}
+{%block jcss%}{%endblock jcss%}
+
+{% block content %}
+
+    
+  <!--
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Welcome To Customer Feedback </h1>
+        <p>This application enables customers to give their feedback on products and 
+        services rendered by companies in East Africa, the system also provides a platform for organizations to offer better goods and services to their customers
+        and also rectify their mistakes on time.</p>
+        <p>To give your feedback, kindly register and login to the system</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="{#% url 'cfback:registration' %} role="button">Sign-Up »</a>
+          <a class="btn btn-lg btn-primary" href="{% url 'cfback:login' %}" role="button">Login »</a>
+        </p>
+      </div>
+     </div>
+   
+            </div>
+          </div>
+        </div>
+     </div>
+-->
+<!--======================================= sign-up section =========================================== -->
+
+<div class="container">
+
+   <div class="jumbotron">
+        <p><h1>Welcome To Customer Feedback </h1></p>
+        <h6 class="bigstats"><p>This application enables customers to give their feedback on products and 
+        services rendered by companies in East Africa, the system also provides a platform for organizations to offer better goods and services to their customers
+        and also rectify their mistakes on time.</p>
+        <p>To give your feedback, kindly register and login to the system</p></h6>
+   </div>
+<div class="row">
+
+        <div class="span6">
+        
+         <div class="account-container register">
+	
+	          <div class="content clearfix">
+		
+		        <form action="." method="post"> {% csrf_token %}
+		
+			<h1>Signup for Free Account</h1>			
+			
+			<div class="login-fields">
+				
+				<p>Create your free account:</p>
+                <div class="field">
+					<label for="username">Username:</label>
+					<input type="text" id="username" name="username" value="" placeholder="Username" class="login" />
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<label for="firstname">First Name:</label>
+					<input type="text" id="firstname" name="firstname" value="" placeholder="First Name" class="login" />
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<label for="lastname">Last Name:</label>	
+					<input type="text" id="lastname" name="lastname" value="" placeholder="Last Name" class="login" />
+				</div> <!-- /field -->
+				
+				
+				<div class="field">
+					<label for="email">Email Address:</label>
+					<input type="text" id="email" name="email" value="" placeholder="Email" class="login"/>
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<label for="password">Password:</label>
+					<input type="password" id="password" name="password" value="" placeholder="Password" class="login"/>
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<label for="confirm_password">Confirm Password:</label>
+					<input type="password" id="confirm_password" name="confirm_password" value="" placeholder="Confirm Password" class="login"/>
+				</div> <!-- /field -->
+				
+			</div> <!-- /login-fields -->
+			
+			<div class="login-actions">
+				
+				<span class="login-checkbox">
+					<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
+					<label class="choice" for="Field">Agree with the Terms & Conditions.</label>
+				</span>
+									
+				<button class="button btn btn-primary btn-large">Register</button>
+                <input type="hidden" name="next" value="/cfback/dashboard" />
+				
+			</div> <!-- .actions -->
+			
+		</form>
+		
+	</div> <!-- /content -->
+	
+</div> <!-- /account-container -->
+
+
+<!-- Text Under Box -->
+<div class="login-extra">
+	Already have an account? <a href="{% url 'cfback:login' %}">Login to your account</a>
+</div> <!-- /login-extra -->
+</div>
+<!-- / sign-up -->
+
+<!--======================================= login section =========================================== -->
+  <div class="span6">
+  <div class="account-container">
+	
+	<div class="content clearfix">
+    {% if form.has_errors %}
+         <p>Your username and password didn't match.
+                     Please try again.</p>
+    {% endif %}
+		
+		<form action="." method="post">  {% csrf_token %}
+		
+			<h1>Member Login</h1>		
+			
+			<div class="login-fields">
+				
+				<p>Please provide your details</p>
+				
+				<div class="field">
+					<label for="username">Username</label>
+					<input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<label for="password">Password:</label>
+					<input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field"/>
+				</div> <!-- /password -->
+				
+			</div> <!-- /login-fields -->
+			
+			<div class="login-actions">
+				
+				<span class="login-checkbox">
+					<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
+					<label class="choice" for="Field">Keep me signed in</label>
+				</span>
+									
+				<button class="button btn btn-success btn-large">Sign In</button>
+                <input type="hidden"  name="next"  value="/cfback/dashboard"/>
+				
+			</div> <!-- .actions -->
+			
+			
+			
+		</form>
+		
+	</div> <!-- /content -->
+	
+</div> <!-- /account-container -->
+
+
+
+<div class="login-extra">
+	<a href="#">Reset Password</a>
+</div>
+</div> <!-- /login-extra -->
+</div>
+</div>
+<script type="text/javascript">
+$(function() {
+	$( "#id_username" ).addClass("form-control").attr("placeholder", "username").attr('required','required').focus();
+    $( "#id_password" ).addClass("form-control").attr("placeholder", "password").attr('required','required');  
+});
+</script>
+<!-- / login -->
+
+
+{% endblock content %}

@@ -1,0 +1,71 @@
+{% extends "cfback/base_index.html" %}
+{%load staticfiles%}
+{% block title %}Dev Login{% endblock %}
+{%block jcss%}{%endblock jcss%}
+{% block content %}<br><br>
+{%block head%}<h3></h3>{%endblock%}
+
+
+<div class="account-container">
+	
+	<div class="content clearfix">
+    {% if form.has_errors %}
+         <p>Your username and password didn't match.
+                     Please try again.</p>
+    {% endif %}
+		
+		<form action="." method="post">  {% csrf_token %}
+		
+			<h1>Member Login</h1>		
+			
+			<div class="login-fields">
+				
+				<p>Please provide your details</p>
+				
+				<div class="field">
+					<label for="username">Username</label>
+					<input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<label for="password">Password:</label>
+					<input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field"/>
+				</div> <!-- /password -->
+				
+			</div> <!-- /login-fields -->
+			
+			<div class="login-actions">
+				
+				<span class="login-checkbox">
+					<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
+					<label class="choice" for="Field">Keep me signed in</label>
+				</span>
+									
+				<button class="button btn btn-success btn-large">Sign In</button>
+                <input type="hidden"  name="next"  value="/cfback/dashboard"/>
+				
+			</div> <!-- .actions -->
+			
+			
+			
+		</form>
+		
+	</div> <!-- /content -->
+	
+</div> <!-- /account-container -->
+
+
+
+<div class="login-extra">
+	<a href="#">Reset Password</a>
+</div> <!-- /login-extra -->
+
+<script type="text/javascript">
+$(function() {
+	$( "#id_username" ).addClass("form-control").attr("placeholder", "username").attr('required','required').focus();
+    $( "#id_password" ).addClass("form-control").attr("placeholder", "password").attr('required','required');  
+});
+</script>
+    
+{% endblock content %}
+

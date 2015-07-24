@@ -2,9 +2,18 @@
 {%block title%}Submit Feedback{%endblock %}
 {%block content%}
 
-<form  class="form-horizontal" method="post" action="."> {% csrf_token %}
+   <p>
+ {% if user.is_authenticated %}
+   welcome :{{ user.username }}
+ {% else %}
+   <h5> not a registered user </h5>
+{% endif %} 
+
+</p>
+
+<form  class="form-signin" method="post" action="."> {% csrf_token %}
    {{ form.as_p }}
-   <input type="submit" value="submit" />
+   <input type="submit" value="submit" class="btn btn-sm btn-primary btn-block" />
    <input type="hidden" name="next" value="/cfback/" />
 </form>
 

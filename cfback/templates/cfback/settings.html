@@ -1,0 +1,15 @@
+{%extends 'cfback/base.html'%}
+{%block title%}{{ request.user.username}}{%endblock %}
+
+{%block content%}<br><br>
+{%block head%}Settings{%endblock %}
+  
+  <form action="." method="POST">
+  {% csrf_token %}
+  Show other users feedback:
+  <input type="checkbox" name="show_users" {% if show_users %} checked {% endif %}/>
+  <input type="submit" value="Save"/>
+  </form>
+  
+
+{%endblock %}
